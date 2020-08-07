@@ -1,0 +1,108 @@
+
+    <footer>
+        <div>
+            <div class="footer-logo">
+                {% if home_page %}
+                <a href="{% url 'blog:home' %}">{{home_page.site_theme}}</a>
+                {% endif %}
+            </div>
+            <div class="footer-site-description">
+                {% if home_page %}
+                <a href="{% url 'blog:home' %}">{{home_page.site_description}}</a>
+                {% endif %} 
+            </div>
+        </div>
+        <section>
+            {% if footer_tags_heading_text %}
+            <div class="footer-tags-heading">
+               {{footer_tags_heading_text.name}}
+            </div>
+            {% endif %}
+            <div class="footer-tags-container">
+                <div class="footer-tags-sub-container">
+                    {% if cat1 %}
+                    <span class="footer-category">
+                        <a href="{{cat1.get_absolute_url}}">{{cat1.category_name}}</a>
+                    </span>
+                    {% for tag in cat1.tags_set.all|slice:":8" %}
+                    <span>
+                        <a href="{{tag.get_absolute_url}}">
+                            {{tag.tag_name}}
+                        </a>
+                    </span>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="footer-tags-sub-container">
+                    {% if cat2 %}
+                    <span class="footer-category">
+                        <a href="{{cat2.get_absolute_url}}">{{cat2.category_name}}</a>
+                    </span>
+                    {% for tag in cat2.tags_set.all|slice:":8" %}
+                    <span>
+                        <a href="{{tag.get_absolute_url}}">
+                            {{tag.tag_name}}
+                        </a>
+                    </span>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="footer-tags-sub-container">
+                    {% if cat3 %}
+                    <span class="footer-category">
+                        <a href="{{cat3.get_absolute_url}}">{{cat3.category_name}}</a>
+                    </span>
+                    {% for tag in cat3.tags_set.all|slice:":8" %}
+                    <span>
+                        <a href="{{tag.get_absolute_url}}">
+                            {{tag.tag_name}}
+                        </a>
+                    </span>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="footer-tags-sub-container">
+                    {% if cat4 %}
+                    <span class="footer-category">
+                        <a href="{{cat4.get_absolute_url}}">{{cat4.category_name}}</a>
+                    </span>
+                    {% for tag in cat4.tags_set.all|slice:":8" %}
+                    <span>
+                        <a href="{{tag.get_absolute_url}}">
+                            {{tag.tag_name}}
+                        </a>
+                    </span>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        <div class="footer-social-medial-links">
+            {% if social_media_heading_text %}
+            <span class="footer-social-media-heading">
+                {{social_media_heading_text.name}}
+            </span>
+            {% endif %}
+            {% for icon in social_media_icons %}
+            <span>
+                <a href="{{icon.url}}">
+                    {% if icon.icon_img %}
+                    <img  class="social-media-icons" src="{{icon.icon_img.url}}" alt="{{icon.name}}">
+                    {% else %}
+                    {% endif %}
+                </a>
+            </span>
+            {% endfor %}
+        </div>
+    </footer>
+    <div class="copy-right-infor">
+        <span>&copy;
+            {% if year %}
+            {{year}}
+            {% endif %}
+        </span>
+    </div>
+    <div class="website-credit">
+        <span>website by wmcode@gmail.com&nbsp;&nbsp;+263779818939</span>
+    </div>
+

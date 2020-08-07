@@ -1,0 +1,229 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}">
+    <script type="text/javascript" src="{% static 'blog/js/quick-view.js' %}"></script>
+    
+    
+    
+</head>
+<body  onresize="size()">
+
+
+
+
+        <ul class="logo-menu">
+            <li class="logo">
+                {% if home_page %}
+                <a href="{% url 'blog:home' %}">{{home_page.site_theme}}</a>
+                {% endif %}
+            </li>
+            {% if menu_button %}
+            <li style="cursor: pointer;" id="toogle-button" class="toogle-button">
+                {% if menu_button.icon_img %}
+                <img src="{{menu_button.icon_img.url}}">
+                {% endif %}
+            </li>
+            {% endif %}
+        </ul>  
+
+
+
+
+
+
+        <ul id="primary-menu" class="primary-menu">
+            <li><a href="{% url 'blog:home' %}">Home</a></li>
+            {% if cat1 %}
+            <li class="women-primary-menu">
+                <span  id="women-primary-menu" style="cursor: pointer;">
+                    <a href="{{cat1.get_absolute_url}}">{{cat1.category_name}}</a>
+                </span>
+                <div id="women-dropdown-container" class="women-dropdown-container">
+                    {% for tag in cat1.tags_set.all %}
+                    <span>
+                        <a href="{{tag.get_absolute_url}}">
+                            {{tag.tag_name}}
+                        </a>
+                    </span>
+                    {% endfor %}
+                    <span>
+                        <a href="{{cat1.get_absolute_url}}">
+                            all
+                        </a>
+                    </span>
+                    {% if home_page %}
+                    <span class="hide-panel">{{home_page.hide_panel_statement}}</span>
+                    {% endif %}
+                </div>
+            </li>
+            {% endif %}
+
+            {% if cat2 %}
+            <li id="men-primary-menu" class="men-primary-menu" >
+                <span style="cursor: pointer;">
+                    <a href="{{cat2.get_absolute_url}}">{{cat2.category_name}}</a>
+                </span>
+                <div id="men-dropdown-container" class="men-dropdown-container">
+                    {% for tag in cat2.tags_set.all %}
+                    <span>
+                        <a href="{{tag.get_absolute_url}}">
+                            {{tag.tag_name}}
+                        </a>
+                    </span>
+                    {% endfor %}
+                    <span>
+                        <a href="{{cat2.get_absolute_url}}">
+                            all
+                        </a>
+                    </span>
+                    {% if home_page %}
+                    <span class="hide-panel">{{home_page.hide_panel_statement}}</span>
+                    {% endif %}
+                </div>
+            </li>
+            {% endif %}
+
+            {% if cat3 %}
+            <li id="children-primary-menu" class="children-primary-menu">
+                <span style="cursor: pointer;">
+                    <a href="{{cat3.get_absolute_url}}">{{cat3.category_name}}</a>
+                </span>
+                <div id="children-dropdown-container" class="children-dropdown-container">
+                    {% for tag in cat3.tags_set.all %}
+                    <span>
+                        <a href="{{tag.get_absolute_url}}">
+                            {{tag.tag_name}}
+                        </a>
+                    </span>
+                    {% endfor %}
+                    <span>
+                        <a href="{{cat3.get_absolute_url}}">
+                            all
+                        </a>
+                    </span>
+                    {% if home_page %}
+                    <span class="hide-panel">{{home_page.hide_panel_statement}}</span>
+                    {% endif %}
+                </div>
+            </li>
+            {% endif %}
+
+            {% if cat4 %}
+            <li id="accessories-primary-menu" class="accessories-primary-menu">
+                <span style="cursor: pointer;">
+                    <a href="{{cat4.get_absolute_url}}">{{cat4.category_name}}</a>
+                </span> 
+                <div id="accessories-dropdown-container" class="accessories-dropdown-container">
+                    {% for tag in cat4.tags_set.all %}
+                    <span>
+                        <a href="{{tag.get_absolute_url}}">
+                            {{tag.tag_name}}
+                        </a>
+                    </span>
+                    {% endfor %}
+                    <span>
+                        <a href="{{cat4.get_absolute_url}}">
+                            all
+                        </a>
+                    </span>
+                    {% if home_page %}
+                    <span class="hide-panel">{{home_page.hide_panel_statement}}</span>
+                    {% endif %}
+                </div>
+            </li>
+            {% endif %}
+        </ul>
+        
+
+
+
+
+    <header>
+
+       {% if home_page %}
+            {% if first_product_from_selected_tags %}
+              {% if first_product_from_selected_tags.product_picture %}
+        <div class="header-sub-container" style="background-image: url({{first_product_from_selected_tags.product_picture.url}}); background-size: cover;">
+            {% else %}
+            {% endif %}
+
+            <div class="main-heading"><span>{{first_product_from_selected_tags.product_tag.tag_name}}</span></div>
+            <div class="main-heading-description">{{first_product_from_selected_tags.product_tag.tag_description}} 
+            </div>
+            {% else %}
+            {% endif %}
+            <div class="primary-call-to-action">
+                {{home_page.call_to_action_statement}}
+            </div>
+            <div class="contacts">
+                <span>Call: {{home_page.call_number}}</span>
+                <span>
+                    whatsapp: 
+                    {{home_page.whatsapp_number}}
+                </span>
+                <span>
+                    email:
+                    {{home_page.email}}</span>
+                <span>
+                    <a href="{% url 'blog:client_message' %}">Direct Message here</a>
+                </span>
+            </div>
+        </div>
+
+        {% endif %}
+
+    </header>
+    
+<!-- SECTION THREE PRODUCT LISTING -->
+    {% if all_products_from_selected_tags %}
+    <div class="product-listing-heading">{{all_products_from_selected_tags.tag_name}}</div>
+    <section class="product-listing-container">
+        {% for product in all_products_from_selected_tags.products_set.all %}
+        <div class="product-container">
+            <figure>
+                {% if product.product_picture %}
+                <img src="{{product.product_picture.url}}">
+                {% else %}
+                {% endif %}
+                <figcaption>{{product.product_name}}</figcaption>
+                <figcaption>{{product.product_price}}</figcaption>
+                <div class="tag-category-and-quickview">
+                    <span>
+                        <a href="{{product.product_tag.get_absolute_url}}">
+                            {{product.product_tag.tag_name}}
+                        </a>
+                    </span>
+                    <span>quick view</span>
+                    <span>
+                        <a href="{{product.category.get_absolute_url}}">
+                            {{product.category.category_name}}
+                        </a>
+                    </span>
+                </div>
+            </figure>
+        </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+   
+
+
+<hr>
+
+<!-- <footer>
+    <div class="footer-text">
+        2019
+    </div>
+</footer> -->
+{% include "footer/footer.html" %}
+
+
+<div id="demo"></div>
+<script type="text/javascript" src="{% static 'blog/js/jquery-3.3.1.min.js' %}"></script> 
+<script type="text/javascript" src="{% static 'blog/js/home.js' %}"></script>
+
+</body>
+</html>

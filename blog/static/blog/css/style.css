@@ -1,0 +1,519 @@
+/*HEADER*/
+.primary-menu a{
+    text-decoration: none;
+    color: white;
+}
+.primary-menu a:hover{
+    text-decoration: underline;
+}
+.women-dropdown-container,
+.men-dropdown-container,
+.children-dropdown-container,
+.accessories-dropdown-container
+{
+    position: absolute;
+    width: 100%;
+    left: 0.5px;
+    top: 60px;
+    flex-wrap: wrap;
+    align-content: space-between;
+    display: none;
+    background: rgb(38, 38, 38);
+    color: rgb(128, 128, 128);
+    box-shadow: 1px 1px 3px black;
+/*    opacity: 0;
+    transition:  opacity 3s;*/
+    
+}
+
+.women-dropdown-container span,
+.men-dropdown-container span,
+.children-dropdown-container span,
+.accessories-dropdown-container span{
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.hide-panel{
+    display: inline-block;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    box-shadow: 1px 1px 1px grey;
+    background-color: black;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+
+.logo{
+    font-size: 30px;
+}
+.logo a{
+    text-decoration: none;
+    color: black;
+}
+.logo-menu{
+    position: absolute;
+    margin: auto;
+    left: 7%;
+    top: 0px;
+    width: 80%;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 1px 1px 3px;
+    margin-bottom: 0px;
+}
+.toogle-button:nth-child(2){
+    padding-top: 6px;
+    margin-right: 10px;
+
+}
+
+
+
+.primary-menu{
+    list-style: none;
+    background: black;
+    box-shadow: black;
+    color: white;
+    margin-top: 0px;
+    justify-content: space-around;
+    display: none;
+    position: absolute;
+    width: 89%;
+    font-family: Arial;
+    top: 50px;
+
+
+
+}
+.primary-menu li{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.women-primary-menu-arrow-right,
+.men-primary-menu-arrow-right,
+.children-primary-menu-arrow-right,
+.accessories-primary-menu-arrow-right{
+    width: 15px;
+    display: inline-block;
+/*    position: absolute;
+    top: 85px;*/
+
+}
+
+
+
+/*header-sub-container*/
+.header-sub-container{
+    margin-top: 50px;
+    overflow: auto;
+    height: auto;
+}
+.main-heading{
+    font-size: 9vw;
+    text-align: center;
+    padding-top: 100px;
+    font-family: fantasy; 
+    text-shadow: 1px 1px 1px; 
+    font-weight: bolder;  
+
+}
+.main-heading-description{
+    margin-top: 40px;
+    text-align: center;
+    font-family: Verdana;
+    font-weight: bold;
+
+}
+.primary-call-to-action{
+    text-align: center;
+    font-family: Verdana;
+    margin-top: 70px;
+}
+header{
+    overflow: auto;
+}
+.contacts{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-family: Verdana;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-radius: 200px;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    opacity: 0.7;
+}
+.contacts span a{
+    text-decoration: none;
+    color: white;
+}
+.contacts span a:hover{
+    text-decoration: underline;
+}
+
+/*HEADER STYLES ENDS*/
+
+
+/*SECTION  ONE  BENEFIT LISTINGS STYLES START*/
+.benefit-listings-container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.benefit-listings-content{
+    position: relative;
+    max-width: 40%;
+    box-shadow: 1px 1px 3px;
+    margin-top: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.benefit-listings-content:before{
+    content: "";
+    position: absolute;
+    top:0px;
+    right: 0px;
+    width: 0px;
+    border-top: solid 80px rgb(38, 38, 38);
+    opacity: 0.9;
+    border-left: solid 80px white;
+}
+.benefit-listings-heading{
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    text-align: center;
+    font-size: 4vw;
+    font-family: Verdana;
+    font-weight: bold;
+    opacity: 0.7;
+}
+.benefit-listings-body{
+    display: block;
+    font-size: 15px;
+    font-family: Verdana;
+}
+
+/*SECTION TWO TRUST LISTINGS*/
+.trust-listing-container{
+    height: 300px;
+    color: black;
+    margin-top: 0px;
+    background: linear-gradient(grey, rgb(38, 38, 38));
+}
+.trust-listing-heading{
+    text-align: center;
+    font-size: 5vw;
+    padding-top: 70px;
+}
+.trust-listing-body{
+    text-align: center;
+    font-size: 3vw;
+
+}
+
+/*SECTION THREE. PRODUCT LISTING*/
+figure{
+    box-shadow: 1px 1px 3px;
+    margin: 5px;
+}
+figure img{
+    display: inline-block;
+    width: 100%;
+    z-index: 1;
+}
+figcaption{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: helvetica;
+    font-weight: bold;
+    color: rgb(80, 80, 80);
+}
+.product-listing-heading{
+    text-align: center;
+    font-size: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: helvetica;
+    margin-top: 30px;
+    /*background: linear-gradient(rgb(89, 89, 89),rgb(84, 84, 84),rgb(89, 89, 89));*/
+    color: black;
+    box-shadow: 1px 1px 2px rgb(100,100,100);
+}
+.product-listing-container{
+   display: flex;
+   flex-wrap: wrap;
+   align-content: space-between;
+   position: relative;
+}
+.product-container{
+    width: 50%;
+    transform: scale(1,1);
+    transition: transform 1s, box-shadow 1s;
+    box-shadow: unset;
+}
+.product-container:hover{
+    transform: scale(1.03, 1.03);
+}
+
+.tag-category-and-quickview{
+    display: flex;
+    justify-content: space-between;
+}
+.tag-category-and-quickview span a,
+.quick-view{
+    text-decoration: none;
+    color: rgb(104, 104, 104);
+}
+.tag-category-and-quickview span a:hover,
+.quick-view:hover{
+    text-decoration: underline;
+    cursor: pointer;
+
+}
+.tag-category-and-quickview span{
+    display: inline-block;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+    box-shadow: 1px 1px 2px rgb(100,100,100);
+    padding-right: 6px;
+    padding-left: 6px;
+    border-radius: 10px;
+    font-family: helvetica;
+}
+
+/*MESSAGE FORM START*/
+.client-message-header-div{
+    margin-top: 60px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(grey, rgb(38, 38, 38));
+}
+.client-message-contacts{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.client-message-contacts span{
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 30px;
+}
+.success-message{
+    width: 40%;
+    background-color: green;
+    text-align: center;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: helvetica;
+    box-shadow: 1px 1px 1px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.form-container form{
+    width: 80%;
+    margin: auto;
+}
+.client-name,
+.client-email,
+.client-number,
+.client-message{
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    font-size: 20px;
+}
+.form-container form textarea[name="message"]{
+    width: 100%;
+    border: none;
+    box-shadow: 1px 1px 4px rgb(100,100,100);
+}
+
+.form-container form input[type="text"],
+.form-container form input[type="email"]{
+    width: 100%;
+    height: 40px;
+    border: none;
+    box-shadow: 1px 1px 4px rgb(100,100,100);
+}
+
+.form-container form input[type="submit"]{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 90px;
+    padding-left: 90px;
+    margin-top: 20px;
+    font-size: 15px;
+}
+/*MESSAGE FORM ENDS*/
+
+/*FOOTER START*/
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: rgb(49, 49, 49);
+    padding-bottom: 20px;
+    font-family: helvetica;
+    color: rgb(26, 26, 26);
+    box-shadow: 1px 1px 1px;
+}
+footer a{
+    color: rgb(26, 26, 26);
+    text-decoration: none;
+}
+footer a:hover{
+    text-decoration: underline;
+}
+
+.footer-logo{
+    font-weight: bold;
+    font-size: 40px;
+    margin-right: 10px;
+    color: black;
+    box-sizing: border-box;
+    padding-top: 40px;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 30px;
+}
+.footer-site-description{
+    box-sizing: border-box;
+    padding-top: 10px;
+    margin-left: 10px;
+}
+
+.footer-category{
+    font-size: 17px;
+    font-weight: bold;
+}
+.footer-category:hover {
+    text-decoration: underline;
+}
+
+
+.footer-tags-heading{
+    font-size: 18px;
+    padding-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.footer-tags-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.footer-tags-sub-container span{
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-social-medial-links{
+    margin-top: 17px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.footer-social-media-heading{
+/*    text-decoration: underline;*/
+}
+.footer-social-medial-links span{
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.copy-right-infor{
+    text-align: center;
+    background-color:   rgb(38, 38, 38);
+    color:  rgb(128, 128, 128);
+}
+.website-credit{
+    text-align: right;
+    background-color:   rgb(38, 38, 38);
+    color: rgb(90, 90, 90);
+    padding-right: 10px;
+}
+.social-media-icons{
+    width: 30%;
+}
+
+/*FOOTER ENDS*/
+
+
+/*MEDIA QUERIES START*/
+@media only screen and (min-width: 600px) {
+    .primary-menu{
+        width: 91%;
+    }
+
+    .benefit-listings-content{
+        max-width: 40%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+        .primary-menu{
+        width: 93%;
+    }
+
+    .product-container{
+        width: 32%;
+    }
+
+
+}
+
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+        .primary-menu{
+        width: 94%;
+    }
+    .benefit-listings-container{
+        flex-wrap: nowrap;
+    }
+    .benefit-listings-heading{
+        font-size: 3vw;
+    }
+
+    .product-container{
+        width: 25%;
+    }
+
+
+}
+
+
+@media only screen and (min-width: 1200px) {
+            .primary-menu{
+        width: 96%;
+        right: 6.5px;
+    }
+}

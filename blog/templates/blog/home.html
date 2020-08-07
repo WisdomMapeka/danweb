@@ -1,0 +1,425 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}">
+    <script type="text/javascript" src="{% static 'blog/js/jquery-3.3.1.min.js' %}"></script> 
+    <script type="text/javascript" src="{% static 'blog/js/quick-view.js' %}"></script>
+    
+    
+    
+    
+</head>
+<body  onresize="size()">
+
+
+
+
+        <ul class="logo-menu">
+            <li class="logo">
+                {% if home_page %}
+                <a href="{% url 'blog:home' %}">{{home_page.site_theme}}</a>
+                {% endif %}
+            </li>
+            {% if menu_button %}
+            <li style="cursor: pointer;" id="toogle-button" class="toogle-button">
+                {% if menu_button.icon_img %}
+                <img src="{{menu_button.icon_img.url}}">
+                {% endif %}
+            </li>
+            {% endif %}
+        </ul>  
+
+
+
+
+
+
+        <ul id="primary-menu" class="primary-menu">
+            <li><a href="{% url 'blog:home' %}">Home</a></li>
+            {% if cat1 %}
+            <li class="women-primary-menu">
+                <span   id="women-primary-menu" style="cursor: pointer;">
+                    <a href="{{cat1.get_absolute_url}}">{{cat1.category_name}}</a>
+                </span>
+                <div id="women-dropdown-container" class="women-dropdown-container">
+                    {% for tag in cat1.tags_set.all %}
+                    <span>
+                        <a href="{{tag.get_absolute_url}}">
+                            {{tag.tag_name}}
+                        </a>
+                    </span>
+                    {% endfor %}
+                    <span>
+                        <a href="{{cat1.get_absolute_url}}">
+                            all
+                        </a>
+                    </span>
+                    {% if home_page %}
+                    <span class="hide-panel">{{home_page.hide_panel_statement}}</span>
+                    {% endif %}
+                </div>
+            </li>
+            {% endif %}
+
+            {% if cat2 %}
+            <li id="men-primary-menu" class="men-primary-menu" >
+                <span style="cursor: pointer;">
+                    <a href="{{cat2.get_absolute_url}}">{{cat2.category_name}}</a>
+                </span>
+                <div id="men-dropdown-container" class="men-dropdown-container">
+                    {% for tag in cat2.tags_set.all %}
+                    <span>
+                        <a href="{{cat2.get_absolute_url}}">
+                            {{tag.tag_name}}
+                        </a>
+                    </span>
+                    {% endfor %}
+                    <span>
+                        <a href="{{cat2.get_absolute_url}}">
+                            all
+                        </a>
+                    </span>
+                    {% if home_page %}
+                    <span class="hide-panel">{{home_page.hide_panel_statement}}</span>
+                    {% endif %}
+                </div>
+            </li>
+            {% endif %}
+
+            {% if cat3 %}
+            <li id="children-primary-menu" class="children-primary-menu">
+                <span style="cursor: pointer;">
+                    <a href="{{cat3.get_absolute_url}}">{{cat3.category_name}}</a>
+                </span>
+                <div id="children-dropdown-container" class="children-dropdown-container">
+                    {% for tag in cat3.tags_set.all %}
+                    <span>
+                        <a href="{{tag.get_absolute_url}}">
+                            {{tag.tag_name}}
+                        </a>
+                    </span>
+                    {% endfor %}
+                    <span>
+                        <a href="{{cat3.get_absolute_url}}">
+                            all
+                        </a>
+                    </span>
+                    {% if home_page %}
+                    <span class="hide-panel">{{home_page.hide_panel_statement}}</span>
+                    {% endif %}
+                </div>
+            </li>
+            {% endif %}
+
+            {% if cat4 %}
+            <li id="accessories-primary-menu" class="accessories-primary-menu">
+                <span style="cursor: pointer;">
+                    <a href="{{cat4.get_absolute_url}}">{{cat4.category_name}}</a>
+                </span> 
+                <div id="accessories-dropdown-container" class="accessories-dropdown-container">
+                    {% for tag in cat4.tags_set.all %}
+                    <span>
+                        <a href="{{tag.get_absolute_url}}">
+                            {{tag.tag_name}}
+                        </a>
+                    </span>
+                    {% endfor %}
+                    <span>
+                        <a href="{{cat4.get_absolute_url}}">
+                            all
+                        </a>
+                    </span>
+                    {% if home_page %}
+                    <span class="hide-panel">{{home_page.hide_panel_statement}}</span>
+                    {% endif %}
+                </div>
+            </li>
+            {% endif %}
+        </ul>
+        
+
+
+
+
+    <header>
+
+       {% if home_page %}
+        {% if home_page.header_background_img %}
+        <div class="header-sub-container" style="background-image: url({{home_page.header_background_img.url}});">
+        {% else %}
+        {% endif %}
+            <div class="main-heading"><span>{{home_page.site_theme}}</span></div>
+            <div class="main-heading-description">{{home_page.site_description}} 
+            </div>
+            <div class="primary-call-to-action">
+                {{home_page.call_to_action_statement}}
+            </div>
+            <div class="contacts">
+                <span>Call: {{home_page.call_number}}</span>
+                <span>
+                    whatsapp: 
+                    {{home_page.whatsapp_number}}
+                </span>
+                <span>
+                    email:
+                    {{home_page.email}}</span>
+                <span>
+                    <a href="{% url 'blog:client_message' %}">Direct Message here</a>
+                </span>
+            </div>
+        </div>
+
+        {% endif %}
+
+    </header>
+
+    <!-- SECTION ONE BENEFITS LISTINGS -->
+    <section class="benefit-listings-container">
+
+        {% if benefit_listings %}
+          {% for benefit in benefit_listings %}
+        
+        <div class="benefit-listings-content">
+            <span class="benefit-listings-heading">{{benefit.benefit_listing_heading}}</span>
+            <span class="benefit-listings-body">{{benefit.benefit_listing_description}}</span>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+    </section>
+
+
+    <!-- SECTION TWO TRUST LISTING I.E CLIENTSs -->
+    <section class="trust-listing-container">
+        {% if trust_listings %}
+        <div class="trust-listing-heading">{{trust_listings.trust_listing_heading}}</div>
+        <div class="trust-listing-body">{{trust_listings.trust_listing_description}}</div>
+        {% endif %}
+    </section>
+
+
+    <!-- SECTION THREE PRODUCT LISTING -->
+    {% if recent_products %}
+    <div class="product-listing-heading">Recent Products</div>
+    <section   class="product-listing-container">
+        {% for product in recent_products %}
+        <div  class="product-container">
+            <figure class="img-figure-{{product.id}}">
+                {% if product.product_picture %}
+                <img class="images-{{product.id}}" src="{{product.product_picture.url}}">
+                {% else %}
+                {% endif %}
+                <figcaption>
+                    {{product.product_name}}
+                </figcaption>
+                <figcaption>
+                    {{product.product_price}}
+                </figcaption>
+                <div class="tag-category-and-quickview">
+                    <span>
+                        <a href="{{product.product_tag.get_absolute_url}}">
+                            {{product.product_tag.tag_name}}
+                        </a>
+                    </span>
+                    <span onclick="Enlarge_img({{product.id}})" class="quick-view">
+                        quick view
+                    </span>
+                    <span>
+                        <a href="{{product.category.get_absolute_url}}">
+                            {{product.category.category_name}}
+                        </a>
+                    </span>
+                </div>
+            </figure>
+        </di>
+
+            
+        </div>
+        {% endfor %}
+    </section>
+    
+    {% endif %}
+
+
+
+
+
+    <!-- SECTION FOUR PRODUCT LISTING -->
+
+    <div id="div-for-enlarged-img"></div>
+
+
+    {% if cat1 %}
+    <div class="product-listing-heading">{{cat1.category_name}}</div>
+        
+        {% if cat1.products_set.all %}
+        <section class="product-listing-container">
+            {% for product in cat1.products_set.all|dictsortreversed:"id"|slice:"4:8" %}
+            <div class="product-container">
+                <figure class="img-figure-{{product.id}}">
+                    {% if product.product_picture %}
+                    <img class="images-{{product.id}}" src="{{product.product_picture.url}}">
+                    {% else %}
+                    {% endif %}
+                    <figcaption>{{product.product_name}}</figcaption>
+                    <figcaption>{{product.product_price}}</figcaption>
+                    <div class="tag-category-and-quickview">
+                        <span>
+                            <a href="{{product.product_tag.get_absolute_url}}">
+                                {{product.product_tag.tag_name}}
+                            </a>
+                        </span>
+                        <span onclick="Enlarge_img({{product.id}})" class="quick-view">
+                            quick view
+                        </span>
+                        <span>
+                            <a href="{{product.category.get_absolute_url}}">
+                                {{product.category.category_name}}
+                            </a>
+                        </span>
+                    </div>
+                </figure>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+        {% endif %}
+
+    <!-- SECTION THREE PRODUCT LISTING -->
+    {% if cat2 %}
+    <div class="product-listing-heading">{{cat2.category_name}}</div>
+        
+        {% if cat2.products_set.all %}
+        <section class="product-listing-container">
+            {% for product in cat2.products_set.all|dictsortreversed:"id"|slice:"4:8" %}
+            <div class="product-container">
+                <figure class="img-figure-{{product.id}}">
+                    {% if product.product_picture %}
+                    <img class="images-{{product.id}}" src="{{product.product_picture.url}}">
+                    {% else %}
+                    {% endif %}
+                    <figcaption>{{product.product_name}}</figcaption>
+                    <figcaption>{{product.product_price}}</figcaption>
+                    <div class="tag-category-and-quickview">
+                        <span>
+                            <a href="{{product.product_tag.get_absolute_url}}">
+                                {{product.product_tag.tag_name}}
+                            </a>
+                        </span>
+                        <span onclick="Enlarge_img({{product.id}})" class="quick-view">
+                            quick view
+                        </span>
+                        <span>
+                            <a href="{{product.category.get_absolute_url}}">
+                                {{product.category.category_name}}
+                            </a>
+                        </span>
+                    </div>
+                </figure>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+        {% endif %}
+
+
+
+    <!-- SECTION FOUR PRODUCT LISTING -->
+    {% if cat3 %}
+    <div class="product-listing-heading">{{cat3.category_name}}</div>
+        
+        {% if cat3.products_set.all %}
+        <section class="product-listing-container">
+            {% for product in cat3.products_set.all|dictsortreversed:"id"|slice:"4:8" %}
+            <div class="product-container">
+                <figure class="img-figure-{{product.id}}">
+                    {% if product.product_picture %}
+                    <img class="images-{{product.id}}" src="{{product.product_picture.url}}">
+                    {% else %}
+                    {% endif %}
+                    <figcaption>{{product.product_name}}</figcaption>
+                    <figcaption>{{product.product_price}}</figcaption>
+                    <div class="tag-category-and-quickview">
+                        <span>
+                            <a href="{{product.product_tag.get_absolute_url}}">
+                                {{product.product_tag.tag_name}}
+                            </a>
+                        </span>
+                        <span onclick="Enlarge_img({{product.id}})" class="quick-view">
+                            quick view
+                        </span>
+                        <span>
+                            <a href="{{product.category.get_absolute_url}}">
+                                {{product.category.category_name}}
+                            </a>
+                        </span>
+                    </div>
+                </figure>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+        {% endif %}
+
+
+    <!-- SECTION FIVE PRODUCT LISTING -->
+    {% if cat4 %}
+    <div class="product-listing-heading">{{cat4.category_name}}</div>
+        
+        {% if cat4.products_set.all %}
+        <section class="product-listing-container">
+            {% for product in cat4.products_set.all|dictsortreversed:"id"|slice:"4:8" %}
+            <div class="product-container">
+                <figure class="img-figure-{{product.id}}">
+                    {% if product.product_picture %}
+                    <img class="images-{{product.id}}" src="{{product.product_picture.url}}">
+                    {% else %}
+                    {% endif %}
+                    <figcaption>{{product.product_name}}</figcaption>
+                    <figcaption>{{product.product_price}}</figcaption>
+                    <div class="tag-category-and-quickview">
+                        <span>
+                            <a href="{{product.product_tag.get_absolute_url}}">
+                                {{product.product_tag.tag_name}}
+                            </a>
+                        </span>
+                        <span onclick="Enlarge_img({{product.id}})" class="quick-view">
+                            quick view
+                        </span>
+                        <span>
+                            <a href="{{product.category.get_absolute_url}}">
+                                {{product.category.category_name}}
+                            </a>
+                        </span>
+                    </div>
+                </figure>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+        {% endif %}
+
+
+
+
+<hr>
+
+<!-- <footer>
+    <div class="footer-text">
+        2019
+    </div>
+</footer> -->
+
+{% include "footer/footer.html" %}
+
+
+
+<div id="demo"></div>
+<script type="text/javascript" src="{% static 'blog/js/jquery-3.3.1.min.js' %}"></script> 
+<script type="text/javascript" src="{% static 'blog/js/home.js' %}"></script>
+
+
+</body>
+</html>

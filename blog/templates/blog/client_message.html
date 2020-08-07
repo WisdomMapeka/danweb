@@ -1,0 +1,211 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}">
+    <script type="text/javascript" src="{% static 'blog/js/jquery-3.3.1.min.js' %}"></script> 
+    
+    
+    
+</head>
+<body  onresize="size()">
+
+
+
+
+        <ul class="logo-menu">
+            <li class="logo">
+                {% if home_page %}
+                <a href="{% url 'blog:home' %}">{{home_page.site_theme}}</a>
+                {% endif %}
+            </li>
+            {% if menu_button %}
+            <li style="cursor: pointer;" id="toogle-button" class="toogle-button">
+                {% if menu_button.icon_img %}
+                <img src="{{menu_button.icon_img.url}}">
+                {% endif %}
+            </li>
+            {% endif %}
+        </ul>  
+
+
+
+
+
+
+        <ul id="primary-menu" class="primary-menu">
+            <li><a href="{% url 'blog:home' %}">Home</a></li>
+            {% if cat1 %}
+            <li class="women-primary-menu">
+                <span   id="women-primary-menu" style="cursor: pointer;">
+                    <a href="{{cat1.get_absolute_url}}">{{cat1.category_name}}</a>
+                </span>
+                <div id="women-dropdown-container" class="women-dropdown-container">
+                    {% for tag in cat1.tags_set.all %}
+                    <span>
+                        <a href="{{tag.get_absolute_url}}">
+                            {{tag.tag_name}}
+                        </a>
+                    </span>
+                    {% endfor %}
+                    <span>
+                        <a href="{{cat1.get_absolute_url}}">
+                            all
+                        </a>
+                    </span>
+                    {% if home_page %}
+                    <span class="hide-panel">{{home_page.hide_panel_statement}}</span>
+                    {% endif %}
+                </div>
+            </li>
+            {% endif %}
+
+            {% if cat2 %}
+            <li id="men-primary-menu" class="men-primary-menu" >
+                <span style="cursor: pointer;">
+                    <a href="{{cat2.get_absolute_url}}">{{cat2.category_name}}</a>
+                </span>
+                <div id="men-dropdown-container" class="men-dropdown-container">
+                    {% for tag in cat2.tags_set.all %}
+                    <span>
+                        <a href="{{cat2.get_absolute_url}}">
+                            {{tag.tag_name}}
+                        </a>
+                    </span>
+                    {% endfor %}
+                    <span>
+                        <a href="{{cat2.get_absolute_url}}">
+                            all
+                        </a>
+                    </span>
+                    {% if home_page %}
+                    <span class="hide-panel">{{home_page.hide_panel_statement}}</span>
+                    {% endif %}
+                </div>
+            </li>
+            {% endif %}
+
+            {% if cat3 %}
+            <li id="children-primary-menu" class="children-primary-menu">
+                <span style="cursor: pointer;">
+                    <a href="{{cat3.get_absolute_url}}">{{cat3.category_name}}</a>
+                </span>
+                <div id="children-dropdown-container" class="children-dropdown-container">
+                    {% for tag in cat3.tags_set.all %}
+                    <span>
+                        <a href="{{tag.get_absolute_url}}">
+                            {{tag.tag_name}}
+                        </a>
+                    </span>
+                    {% endfor %}
+                    <span>
+                        <a href="{{cat3.get_absolute_url}}">
+                            all
+                        </a>
+                    </span>
+                    {% if home_page %}
+                    <span class="hide-panel">{{home_page.hide_panel_statement}}</span>
+                    {% endif %}
+                </div>
+            </li>
+            {% endif %}
+
+            {% if cat4 %}
+            <li id="accessories-primary-menu" class="accessories-primary-menu">
+                <span style="cursor: pointer;">
+                    <a href="{{cat4.get_absolute_url}}">{{cat4.category_name}}</a>
+                </span> 
+                <div id="accessories-dropdown-container" class="accessories-dropdown-container">
+                    {% for tag in cat4.tags_set.all %}
+                    <span>
+                        <a href="{{tag.get_absolute_url}}">
+                            {{tag.tag_name}}
+                        </a>
+                    </span>
+                    {% endfor %}
+                    <span>
+                        <a href="{{cat4.get_absolute_url}}">
+                            all
+                        </a>
+                    </span>
+                    {% if home_page %}
+                    <span class="hide-panel">{{home_page.hide_panel_statement}}</span>
+                    {% endif %}
+                </div>
+            </li>
+            {% endif %}
+        </ul>
+   
+
+{% if home_page %}
+    {% if home_page.header_background_img %}
+   <div class="client-message-header-div" style="background-image: url({{home_page.header_background_img.url}});">
+    {% else %}
+    {% endif %}
+    {% endif %}
+       
+       {% if home_page %}
+       <div class="client-message-contacts">
+            <span>Call: {{home_page.call_number}}</span>
+            <span>
+                whatsapp: 
+                {{home_page.whatsapp_number}}
+            </span>
+            <span>
+                email:
+                {{home_page.email}}</span>
+            <span>
+       </div>
+       {% endif %}
+       
+   </div>
+
+
+
+    {% if messages %}
+        {% for message in messages %}
+
+                <div class="success-message">
+
+                {{message}}
+                </div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+
+
+
+
+    <section class="form-container" >
+
+        <form action="{% url 'blog:client_message' %}" method="POST">
+            {% csrf_token %}
+            <span class="client-name">Name:</span><br>
+            {{form.name}}<br>
+            <span class="client-email">Email:</span><br>
+            {{form.email}}<br>
+            <span class="client-number">Phone Number:</span><br>
+            {{form.number}}<br>
+            <span class="client-message">Message</span><br>
+            {{form.message}}<br>
+            <input type="submit" name="client-message" value="send">
+        </form>
+    </section>
+
+
+<hr>
+
+
+{% include "footer/footer.html" %}
+
+
+
+<div id="demo"></div>
+<script type="text/javascript" src="{% static 'blog/js/jquery-3.3.1.min.js' %}"></script> 
+<script type="text/javascript" src="{% static 'blog/js/home.js' %}"></script>
+
+</body>
+</html>
